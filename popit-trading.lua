@@ -1,0 +1,319 @@
+local library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/phrax015/-Phrax-/refs/heads/main/uilib.lua')))()
+
+local w = library:CreateWindow("Pop It Trading")
+local MainTab = w:CreateFolder("Main")
+local DupeTab = w:CreateFolder("Dupe")
+local AntiReaper = w:CreateFolder("Anti Reaper")
+
+function getArea()
+    for i,v in pairs(game:GetService("Workspace").Boards:GetChildren()) do
+        if v.Player1.Value == game:GetService("Players").LocalPlayer or v.Player2.Value == game:GetService("Players").LocalPlayer then
+            return v 
+        end
+    end
+    return nil
+end
+
+local Area = getArea()
+local items = {"Pop it rainbow", "Ben", "Munneh", "Mommeh Long Legs", "The banana", "Sniffers", "Watermelon", "Flower Seed", "Sports Car", "Tusla rainbow", "Gem Rainbow"}
+local item
+
+DupeTab:Toggle("Banana Cash dupe(2T Required)", function(bool)
+    bananapopit = bool
+end)
+
+DupeTab:Toggle("Pop it rainbow Cash dupe(1.2B Required)", function(bool)
+    rainbowpopit = bool
+end)
+
+DupeTab:Toggle("Lolly Rainbow Cash dupe(600M Required)", function(bool)
+    lollyrainbow = bool
+end)
+
+DupeTab:Toggle("Rainbow banana Cash dupe(100M Required)", function(bool)
+    rainbowbanana = bool
+end)
+
+DupeTab:Toggle("eTruck Cash dupe(10M Required)", function(bool)
+    etruck = bool
+end)
+
+DupeTab:Toggle("Tusla rainbow Cash dupe(2M Required)", function(bool)
+    tuslarainbow = bool
+end)
+
+DupeTab:Toggle("Big cat Cash dupe(200K Required)", function(bool)
+    bigcat = bool
+end)
+
+DupeTab:Toggle("Rainbow cat Cash dupe(20K Required)", function(bool)
+    rainbowcat = bool
+end)
+
+DupeTab:Toggle("Gummy orange Cash dupe(5K Required)", function(bool)
+    gummyorange = bool
+end)
+
+DupeTab:Toggle("Pop it blue Cash dupe(500 Required)", function(bool)
+    popitblue = bool
+end)
+
+DupeTab:Toggle("Amogus cyan Cash dupe(200 Required)", function(bool)
+    amoguscyan = bool
+end)
+
+DupeTab:Toggle("Gem green Cash dupe(100 Required)", function(bool)
+    gemgreen = bool
+end)
+
+MainTab:Box("Item To Buy", "string", function(item)
+   itemtobuy = item
+end)
+
+MainTab:Toggle("Buy Item", function(bool)
+    buyitem = bool
+end)
+
+MainTab:Toggle("Auto Drop Flower Seed", function(bool)
+    autdropflowerseed = bool
+end)
+
+MainTab:Toggle("Safe Place", function(bool)
+    if bool then
+        game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(39.3899612, -11.2439766, -246.390564, 0.104453623, 0.025176391, -0.994211018, -1.02734958e-08, 0.999679506, 0.0253148694, 0.994529784, -0.00264421967, 0.104420148)
+        if game:GetService("Players").LocalPlayer.Character.Humanoid:FindFirstChild("Animator") then
+            game:GetService("Players").LocalPlayer.Character.Humanoid.Animator:Destroy()
+        end
+        wait(1)
+        game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Anchored = true
+    else
+        game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Anchored = false
+        local animator = Instance.new("Animator")
+        animator.Name = "Animator"
+        animator.Parent = game:GetService("Players").LocalPlayer.Character.Humanoid
+        wait(0.1)
+        game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(58.7963257, 18.9443455, -266.831329, -0.0593082756, -1.45951802e-08, -0.998239696, 6.31517549e-09, 1, -1.49961199e-08, 0.998239696, -7.19345294e-09, -0.0593082756) + Vector3.new(0,1,0)
+    end
+end)
+
+AntiReaper:Toggle("Anti Reaper", function(bool)
+    antireaper = bool
+end)
+
+MainTab:Button("Scam", function()
+    game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = Area.Controls.Close.Pad.CFrame + Vector3.new(0,2,0)
+    wait(0.2)
+    for i = 1,10 do
+    	game:GetService("ReplicatedStorage").RemoteEvents.Jumped:FireServer()
+    end
+    wait(0.24)
+    game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = Area.Controls.Done.Pad.CFrame + Vector3.new(0,2,0)
+    wait(0.15)
+    for i = 1,30 do
+    	game:GetService("ReplicatedStorage").RemoteEvents.Jumped:FireServer()
+    end
+end)
+
+spawn(function()
+    while task.wait(0.01) do
+        if buyitem then
+            pcall(function()
+                local ohString1 = itemtobuy
+                game:GetService("ReplicatedStorage").RemoteEvents.BuyItemCash:FireServer(ohString1)
+            end)
+        end
+    end
+end)
+
+spawn(function()
+    while task.wait(0.38) do
+        if bananapopit then
+            pcall(function()
+                local ohString1 = "The banana"
+                game:GetService("ReplicatedStorage").RemoteEvents.Sell:FireServer(ohString1)
+                local ohString1 = "The banana"
+                game:GetService("ReplicatedStorage").RemoteEvents.BuyItemCash:FireServer(ohString1)
+            end)
+        end
+    end
+end)
+
+spawn(function()
+    while task.wait(0.38) do
+        if rainbowpopit then
+            pcall(function()
+                local ohString1 = "Pop It Rainbow!"
+                game:GetService("ReplicatedStorage").RemoteEvents.Sell:FireServer(ohString1)
+                local ohString1 = "Pop It Rainbow!"
+                game:GetService("ReplicatedStorage").RemoteEvents.BuyItemCash:FireServer(ohString1)
+            end)
+        end
+    end
+end)
+
+spawn(function()
+    while task.wait(0.38) do
+        if lollyrainbow then
+            pcall(function()
+                local ohString1 = "Lolly Rainbow"
+                game:GetService("ReplicatedStorage").RemoteEvents.Sell:FireServer(ohString1)
+                local ohString1 = "Lolly Rainbow"
+                game:GetService("ReplicatedStorage").RemoteEvents.BuyItemCash:FireServer(ohString1)
+            end)
+        end
+    end
+end)
+
+spawn(function()
+    while task.wait(0.38) do
+        if rainbowbanana then
+            pcall(function()
+                local ohString1 = "Rainbow Banana"
+                game:GetService("ReplicatedStorage").RemoteEvents.Sell:FireServer(ohString1)
+                local ohString1 = "Rainbow Banana"
+                game:GetService("ReplicatedStorage").RemoteEvents.BuyItemCash:FireServer(ohString1)
+            end)
+        end
+    end
+end)
+
+spawn(function()
+    while task.wait(0.38) do
+        if etruck then
+            pcall(function()
+                local ohString1 = "eTruck"
+                game:GetService("ReplicatedStorage").RemoteEvents.Sell:FireServer(ohString1)
+                local ohString1 = "eTruck"
+                game:GetService("ReplicatedStorage").RemoteEvents.BuyItemCash:FireServer(ohString1)
+            end)
+        end
+    end
+end)
+
+spawn(function()
+    while task.wait(0.38) do
+        if tuslarainbow then
+            pcall(function()
+                local ohString1 = "Tulsa rainbow"
+                game:GetService("ReplicatedStorage").RemoteEvents.Sell:FireServer(ohString1)
+                local ohString1 = "Tulsa rainbow"
+                game:GetService("ReplicatedStorage").RemoteEvents.BuyItemCash:FireServer(ohString1)
+            end)
+        end
+    end
+end)
+
+spawn(function()
+    while task.wait(0.38) do
+        if bigcat then
+            pcall(function()
+                local ohString1 = "Sheriff Cat"
+                game:GetService("ReplicatedStorage").RemoteEvents.Sell:FireServer(ohString1)
+                local ohString1 = "Sheriff Cat"
+                game:GetService("ReplicatedStorage").RemoteEvents.BuyItemCash:FireServer(ohString1)
+            end)
+        end
+    end
+end)
+
+spawn(function()
+    while task.wait(0.38) do
+        if rainbowcat then
+            pcall(function()
+                local ohString1 = "Rainbow Cat"
+                game:GetService("ReplicatedStorage").RemoteEvents.Sell:FireServer(ohString1)
+                local ohString1 = "Rainbow Cat"
+                game:GetService("ReplicatedStorage").RemoteEvents.BuyItemCash:FireServer(ohString1)
+            end)
+        end
+    end
+end)
+
+spawn(function()
+    while task.wait(0.38) do
+        if gummyorange then
+            pcall(function()
+                local ohString1 = "Gummy Orange"
+                game:GetService("ReplicatedStorage").RemoteEvents.Sell:FireServer(ohString1)
+                local ohString1 = "Gummy Orange"
+                game:GetService("ReplicatedStorage").RemoteEvents.BuyItemCash:FireServer(ohString1)
+            end)
+        end
+    end
+end)
+
+spawn(function()
+    while task.wait(0.38) do
+        if popitblue then
+            pcall(function()
+                local ohString1 = "Pop It Blue!"
+                game:GetService("ReplicatedStorage").RemoteEvents.Sell:FireServer(ohString1)
+                local ohString1 = "Pop It Blue!"
+                game:GetService("ReplicatedStorage").RemoteEvents.BuyItemCash:FireServer(ohString1)
+            end)
+        end
+    end
+end)
+
+spawn(function()
+    while task.wait(0.38) do
+        if amoguscyan then
+            pcall(function()
+                local ohString1 = "Amogus Cyan"
+                game:GetService("ReplicatedStorage").RemoteEvents.Sell:FireServer(ohString1)
+                local ohString1 = "Amogus Cyan"
+                game:GetService("ReplicatedStorage").RemoteEvents.BuyItemCash:FireServer(ohString1)
+            end)
+        end
+    end
+end)
+
+spawn(function()
+    while task.wait(0.38) do
+        if gemgreen then
+            pcall(function()
+                local ohString1 = "Gem Green"
+                game:GetService("ReplicatedStorage").RemoteEvents.Sell:FireServer(ohString1)
+                local ohString1 = "Gem Green"
+                game:GetService("ReplicatedStorage").RemoteEvents.BuyItemCash:FireServer(ohString1)
+            end)
+        end
+    end
+end)
+
+spawn(function()
+    while task.wait(0.1) do
+        if antireaper then
+            pcall(function()
+                local ohString1 = "Watermelon"
+                game:GetService("ReplicatedStorage").RemoteEvents.Equip:FireServer(ohString1)
+            end)
+        end
+    end
+end)
+
+spawn(function()
+    while task.wait(0.1) do
+        if autdropflowerseed then
+            pcall(function()
+                local ohString1 = "Flower Seed"
+                game:GetService("ReplicatedStorage").RemoteEvents.Equip:FireServer(ohString1)
+                wait(0.11)
+                local ohString2 = "Flower Seed"
+                game:GetService("ReplicatedStorage").RemoteEvents.Drop:FireServer(ohString2)
+            end)
+        end
+    end
+end)
+
+game:GetService("RunService").RenderStepped:Connect(function()
+    Area = getArea()
+end)
+
+wait(1.75)
+
+local ohString1 = "Dalware Successfully Loaded(Pop it trading)"
+local ohTable2 = {
+    ["ShowOnClose"] = ""
+}
+game:GetService("ReplicatedStorage").LocalEvents.AlertLocal:Fire(ohString1, ohTable2)

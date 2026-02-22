@@ -83,7 +83,7 @@ local function stealCrate(tycoon)
         repeat
             wait(helipart.StealPrompt.HoldDuration)
             fireproximityprompt(helipart.StealPrompt)
-        until helipart:GetAttribute("Holding") == game.Players.LocalPlayer.Name
+        until helipart:GetAttribute("Stolen") == true
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = getTycoon().Essentials.Flag.Metal.CFrame + Vector3.new(0, -25, 0)
         wait(0.7)
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = getTycoon().Essentials["Oil Collector"].CratePromptPart.CFrame + Vector3.new(0, 1, 0)
@@ -92,7 +92,7 @@ local function stealCrate(tycoon)
             repeat 
                 wait(0.1)
                 fireproximityprompt(getTycoon().Essentials["Oil Collector"].CratePromptPart.SellPrompt)
-            until helipart:GetAttribute("Holding") ~= game.Players.LocalPlayer.Name
+            until helipart:GetAttribute("Stolen") ~= true
         end
     end
 end
